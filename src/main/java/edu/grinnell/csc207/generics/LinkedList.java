@@ -1,6 +1,6 @@
 package edu.grinnell.csc207.generics;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T> {
     private static class Node<T> {
         public T value;
 
@@ -26,6 +26,7 @@ public class LinkedList<T> {
      * 
      * @param value the value to add to the end of the list
      */
+    @Override
     public void add(T value) {
         if (first == null) {
             first = new Node<T>(value, null);
@@ -41,6 +42,7 @@ public class LinkedList<T> {
     /**
      * @return the number of elements in the list
      */
+    @Override
     public int size() {
         int sz = 0;
         Node<T> cur = first;
@@ -55,6 +57,7 @@ public class LinkedList<T> {
      * @param index the index of the element to retrieve
      * @return the value at the specified <code>index</code>
      */
+    @Override
     public T get(int index) {
         if (index < 0) {
             throw new IndexOutOfBoundsException(index);
@@ -78,6 +81,7 @@ public class LinkedList<T> {
      * @param index the index of the element to remove
      * @return the element at <code>index</code>
      */
+    @Override
     public T remove(int index) {
         if (index < 0 || (index == 0 && first == null)) {
             throw new IndexOutOfBoundsException(index);

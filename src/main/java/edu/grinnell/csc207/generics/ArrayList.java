@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * An array-based implementation of a list, specialized to ints.
  */
-public class ArrayList<T> {
+public class ArrayList<T> implements List<T> {
 
     private static final int INITIAL_SIZE = 8;
 
@@ -32,6 +32,7 @@ public class ArrayList<T> {
      * 
      * @param value the value to add to the end of the list
      */
+    @Override
     public void add(T value) {
         ensureCapacity();
         data[sz++] = value;
@@ -40,6 +41,7 @@ public class ArrayList<T> {
     /**
      * @return the number of elements in the list
      */
+    @Override
     public int size() {
         return sz;
     }
@@ -48,6 +50,7 @@ public class ArrayList<T> {
      * @param index the index of the element to retrieve
      * @return the value at the specified <code>index</code>
      */
+    @Override
     public T get(int index) {
         if (index < 0 || index >= sz) {
             throw new IndexOutOfBoundsException(index);
@@ -61,6 +64,7 @@ public class ArrayList<T> {
      * @param index the index of the element to remove
      * @return the element at <code>index</code>
      */
+    @Override
     public T remove(int index) {
         if (index < 0 || index >= sz) {
             throw new IndexOutOfBoundsException(index);
