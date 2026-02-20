@@ -5,20 +5,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class ArrayListTests {
+public class LinkedListTests {
     @Test
     public void emptyListTest() {
-        ArrayList<Integer> i = new ArrayList<>();
+        LinkedList<Integer> i = new LinkedList<>();
         assertEquals(0, i.size());
 
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<String> s = new LinkedList<>();
         assertEquals(0, s.size());
     }
 
     @Test
     public void listAddSize10Nums() {
-        ArrayList<Integer> l = new ArrayList<>();
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
+        LinkedList<String> s = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
             l.add(i);
             s.add("Hello");
@@ -29,8 +29,8 @@ public class ArrayListTests {
 
     @Test
     public void listAddNegNums() {
-        ArrayList<Integer> l = new ArrayList<>();
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
+        LinkedList<String> s = new LinkedList<>();
         l.add(-3);
         l.add(-10);
         l.add(-22);
@@ -47,8 +47,8 @@ public class ArrayListTests {
 
     @Test
     public void listGetSeveral() {
-        ArrayList<Integer> l = new ArrayList<>();
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
+        LinkedList<String> s = new LinkedList<>();
         int[] elements = new int[] {3, 8, 7, 2, 6, 5, 0};
         String[] strs = new String[] {"Hello", "World", "Goodbye", "Bonjour", "Ciao", "Wagwan", "Arigato"};
         for (int i = 0; i < elements.length; i++) {
@@ -63,7 +63,7 @@ public class ArrayListTests {
 
     @Test
     public void listGetOOB() {
-        ArrayList<Integer> l = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
         l.add(3);
         l.add(2);
         l.add(7);
@@ -74,7 +74,7 @@ public class ArrayListTests {
             l.get(3);
         });
 
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<String> s = new LinkedList<>();
         s.add("Chao");
         s.add("Banh Mi");
         s.add("Sushi");
@@ -88,8 +88,8 @@ public class ArrayListTests {
 
     @Test
     public void listRemoveSome() {
-        ArrayList<Integer> l = new ArrayList<>();
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
+        LinkedList<String> s = new LinkedList<>();
         l.add(5);
         l.add(8);
         l.add(7);
@@ -126,7 +126,7 @@ public class ArrayListTests {
 
     @Test
     public void listRemoveOOB() {
-        ArrayList<Integer> l = new ArrayList<>();
+        LinkedList<Integer> l = new LinkedList<>();
         l.add(5);
         l.add(8);
         l.add(7);
@@ -137,7 +137,7 @@ public class ArrayListTests {
             l.remove(3);
         });
 
-        ArrayList<String> s = new ArrayList<>();
+        LinkedList<String> s = new LinkedList<>();
         s.add("Ramen");
         s.add("Gyoza");
         s.add("Carbonara");
