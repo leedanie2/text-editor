@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class ArrayListTests {
+public class ArrayListTests{
     @Test
     public void emptyListTest() {
         ArrayList<Integer> i = new ArrayList<>();

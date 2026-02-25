@@ -8,11 +8,9 @@ import java.util.Arrays;
 public class ArrayList<T> implements List<T> {
 
     private static final int INITIAL_SIZE = 8;
-
     private T[] data;
-
     private int sz;
-
+    
     /**
      * Constructs a new, empty array list.
      */
@@ -75,6 +73,62 @@ public class ArrayList<T> implements List<T> {
             }
             sz -= 1;
             return ret;
+        }
+    }
+
+    /**
+     * Inserts sep between each element of the list
+     */
+    public void intersperse(T sep) {
+        T[] arr = (T[]) new Object[sz*2];
+        for(int i = 1; i < sz*2; i++) {
+            if(i % 2 == 0) {
+                arr[i] = data[i/2];
+            } else {
+                arr[i] = sep;
+            }
+        }
+        data = arr;
+    }
+
+    /**
+     * Finds maximum of list
+     */
+    public T maximum() {
+        T max = data[0];
+        if (max instanceof String){
+            throw new UnsupportedOperationException();
+        }
+        for (int i = 1; i < sz; i++){
+            if ((int)max < (int)data[i]){
+                max = data[i];
+            }
+        }
+        return max;
+    }
+    
+    public String toString() {
+        String str = new String();
+        for (int i = 0; i < sz - 1; i++) {
+            str = str + String.valueOf(data[i]) + ", ";
+        }
+        str = str + String.valueOf(data[sz-1]) + "]";
+        return str;
+    }
+
+    public void insertionSort() {
+        T item = data[0];
+        if (item instanceof String){
+            throw new UnsupportedOperationException();
+        }
+        for(int i = 1; i < sz; i++) {
+            T tmp = data[i];
+            int j = i - 1;
+            while(j >= 0 && (Integer) data[j] < (Integer) tmp) {
+                data[j+1] = data[j];
+                j--;
+            }
+            data[j+1] = tmp; // complete swap
         }
     }
 }

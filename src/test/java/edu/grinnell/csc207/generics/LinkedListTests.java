@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class LinkedListTests {
+public class LinkedListTests{
     @Test
     public void emptyListTest() {
         LinkedList<Integer> i = new LinkedList<>();
