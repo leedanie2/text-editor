@@ -9,27 +9,7 @@ public class Accountant extends Employee {
      * @param id the accountant's ID
      */
     public Accountant(String name, String id) {
-        String accName = "(ACCT) " + name;
-        super(accName, id, 80000, "$$$");
+        super("(ACCT) " + name, id, 80000, "$$$");
     }
 
-    /** @return the accountant's name */
-    public String getName() {
-        return name;
-    }
-
-    /** @return the accountant's ID */
-    public String getId() {
-        return id;
-    }
-
-    /** @return the account's salary */
-    public int getSalary() {
-        return 80000;
-    }
-
-    /** @return the account's noise */
-    public String makeWorkNoise() {
-        return "$$$";
-    }
 }
