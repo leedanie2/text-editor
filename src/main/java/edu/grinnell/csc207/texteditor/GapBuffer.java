@@ -60,17 +60,25 @@ public class GapBuffer implements Buffer {
 
     /**
      * Move the cursor to the left
+     * @throws IndexOutOfBoundsException() if at the very left of buffer
      */
     public void moveLeft() {
-        buffer[lastIndex-1] = buffer[firstIndex - 1];
+        if(firstIndex == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        buffer[lastIndex] = buffer[firstIndex - 1];
         firstIndex--;
         lastIndex--;
     }
 
     /**
      * Move the cursor to the right
+     * @throws IndexOutOfBoundsException() if at the very right of buffer
      */
     public void moveRight() {
+        if(lastIndex == sz - 1) {
+            throw new IndexOutOfBoundsException();
+        }
         buffer[firstIndex] = buffer[lastIndex];
         firstIndex++;
         lastIndex++;
@@ -104,7 +112,7 @@ public class GapBuffer implements Buffer {
         for(int i = 0; i < firstIndex; i++) {
             result = result + String.valueOf(buffer[i]);
         }   
-        for(int i = lastIndex; i < sz; i++) {
+        for(int i = lastIndex + 1; i < sz; i++) {
             result = result + String.valueOf(buffer[i]);
         }
         return result;
