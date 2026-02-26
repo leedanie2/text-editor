@@ -1,10 +1,7 @@
 package edu.grinnell.csc207.inheritance;
 
 /** An accountant. */
-public class Accountant implements Employee {
-    private String name;
-
-    private String id;
+public class Accountant extends Employee {
 
     /**
      * Constructs a new accountant
@@ -12,8 +9,8 @@ public class Accountant implements Employee {
      * @param id the accountant's ID
      */
     public Accountant(String name, String id) {
-        this.name = "(ACCT) " + name;
-        this.id = id;
+        String accName = "(ACCT) " + name;
+        super(accName, id, 80000, "$$$");
     }
 
     /** @return the accountant's name */
