@@ -6,13 +6,22 @@ import org.junit.jupiter.api.Test;
 
 public class ListTest<T>{
 
-    @Test
+    @Test 
+    public void ListTests() {
+        emptyListTest(new ArrayList<>(), new ArrayList<>());
+        listAddSize10Nums(new ArrayList<>(), new ArrayList<>());
+        listAddNegNums(new ArrayList<>(), new ArrayList<>());
+        listGetSeveral(new ArrayList<>(), new ArrayList<>());
+        listGetOOB(new ArrayList<>(), new ArrayList<>());
+        listRemoveSome(new ArrayList<>(), new ArrayList<>());
+        listRemoveOOB(new ArrayList<>(), new ArrayList<>());
+    }
+
     public void emptyListTest(List<Integer> l, List<String> s) {
         assertEquals(0, l.size());
         assertEquals(0, s.size());
     }
 
-    @Test
     public void listAddSize10Nums(List<Integer> l, List<String> s) {
         for (int i = 0; i < 10; i++) {
             l.add(i);
@@ -22,7 +31,6 @@ public class ListTest<T>{
         assertEquals(10, s.size());
     }
 
-    @Test
     public void listAddNegNums(List<Integer> l, List<String> s) {
         l.add(-3);
         l.add(-10);
@@ -38,7 +46,6 @@ public class ListTest<T>{
         assertEquals("Ciao", s.get(2));
     }
 
-    @Test
     public void listGetSeveral(List<Integer> l, List<String> s) {
         int[] elements = new int[] {3, 8, 7, 2, 6, 5, 0};
         String[] strs = new String[] {"Hello", "World", "Goodbye", "Bonjour", "Ciao", "Wagwan", "Arigato"};
@@ -52,7 +59,6 @@ public class ListTest<T>{
         }
     }
 
-    @Test
     public void listGetOOB(List<Integer> l, List<String> s) {
         l.add(3);
         l.add(2);
@@ -75,7 +81,6 @@ public class ListTest<T>{
         });
     }
 
-    @Test
     public void listRemoveSome(List<Integer> l, List<String> s) {
         l.add(5);
         l.add(8);
@@ -111,7 +116,6 @@ public class ListTest<T>{
         assertEquals("Bonjour", s.get(1));
     }
 
-    @Test
     public void listRemoveOOB(List<Integer> l, List<String> s) {
         l.add(5);
         l.add(8);

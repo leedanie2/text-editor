@@ -7,8 +7,11 @@ public class GapBuffer implements Buffer {
     
     private char[] buffer;
     // indices of gap
+
     private int firstIndex;
+
     private int lastIndex;
+
     // size of array
     private int sz = 10;
 
@@ -24,14 +27,15 @@ public class GapBuffer implements Buffer {
 
     /**
      * Insert a char to the right of the cursor
+     * @param ch
      */
     public void insert(char ch) {
-        if(firstIndex == lastIndex) {
-            char[] tmpBuff = new char[2*sz];
-            for(int i = 0; i < firstIndex; i++) {
+        if (firstIndex == lastIndex) {
+            char[] tmpBuff = new char[2 * sz];
+            for (int i = 0; i < firstIndex; i++) {
                 tmpBuff[i] = buffer[i];
             }
-            for(int i = firstIndex; i < sz; i++) {
+            for (int i = firstIndex; i < sz; i++) {
                 tmpBuff[i + firstIndex] = buffer[i];
             }
             buffer = tmpBuff;
@@ -46,13 +50,13 @@ public class GapBuffer implements Buffer {
      * Delete the char to the left of the cursor
      */
     public void delete() {
-        if(firstIndex > 0) {
+        if (firstIndex > 0) {
             firstIndex--;
         }
     }
 
     /**
-     * @returns the int index of the cursor position
+     * @return the int index of the cursor position
      */
     public int getCursorPosition() {
         return firstIndex;
@@ -60,10 +64,10 @@ public class GapBuffer implements Buffer {
 
     /**
      * Move the cursor to the left
-     * @throws IndexOutOfBoundsException() if at the very left of buffer
+     * @throws IndexOutOfBoundsException if at the very left of buffer
      */
     public void moveLeft() {
-        if(firstIndex == 0) {
+        if (firstIndex == 0) {
             throw new IndexOutOfBoundsException();
         }
         buffer[lastIndex] = buffer[firstIndex - 1];
@@ -73,10 +77,10 @@ public class GapBuffer implements Buffer {
 
     /**
      * Move the cursor to the right
-     * @throws IndexOutOfBoundsException() if at the very right of buffer
+     * @throws IndexOutOfBoundsException if at the very right of buffer
      */
     public void moveRight() {
-        if(lastIndex == sz - 1) {
+        if (lastIndex == sz - 1) {
             throw new IndexOutOfBoundsException();
         }
         buffer[firstIndex] = buffer[lastIndex];
@@ -85,18 +89,19 @@ public class GapBuffer implements Buffer {
     }
 
     /**
-     * @returns an int size of the buffer
+     * @return an int size of the buffer
      */
     public int getSize() {
         return sz;
     }
 
     /**
-     * @returns a char at index i
-     * @throws IndexOutOfBoundsException() if user passes in an invalid index ffor buffer
+     * @param i 
+     * @return a char at index i
+     * @throws IndexOutOfBoundsException if user passes in an invalid index ffor buffer
      */
     public char getChar(int i) {
-        if(i >= sz || i < 0) {
+        if (i >= sz || i < 0) {
             throw new IndexOutOfBoundsException();
         }
         return buffer[i];
@@ -104,15 +109,15 @@ public class GapBuffer implements Buffer {
 
     /**
      * converts the buffer array to a string and returns the string. 
-     * @returns a string 
+     * @return a string of the buffer
      */
     public String toString() {
         String result = new String();
         result = "";
-        for(int i = 0; i < firstIndex; i++) {
+        for (int i = 0; i < firstIndex; i++) {
             result = result + String.valueOf(buffer[i]);
         }   
-        for(int i = lastIndex + 1; i < sz; i++) {
+        for (int i = lastIndex + 1; i < sz; i++) {
             result = result + String.valueOf(buffer[i]);
         }
         return result;

@@ -8,7 +8,9 @@ import java.util.Arrays;
 public class ArrayList<T> implements List<T> {
 
     private static final int INITIAL_SIZE = 8;
+
     private T[] data;
+
     private int sz;
     
     /**
@@ -19,6 +21,7 @@ public class ArrayList<T> implements List<T> {
         this.data = (T[]) new Object[INITIAL_SIZE];
         this.sz = 0;
     }
+    
     private void ensureCapacity() {
         if (sz == data.length) {
             data = Arrays.copyOf(data, data.length * 2);
@@ -78,12 +81,14 @@ public class ArrayList<T> implements List<T> {
 
     /**
      * Inserts sep between each element of the list
+     * 
+     * @param sep is the element to insert between each element of the list.
      */
     public void intersperse(T sep) {
-        T[] arr = (T[]) new Object[sz*2];
-        for(int i = 1; i < sz*2; i++) {
-            if(i % 2 == 0) {
-                arr[i] = data[i/2];
+        T[] arr = (T[]) new Object[sz * 2];
+        for (int i = 1; i < sz * 2; i++) {
+            if (i % 2 == 0) {
+                arr[i] = data[i / 2];
             } else {
                 arr[i] = sep;
             }
@@ -93,42 +98,50 @@ public class ArrayList<T> implements List<T> {
 
     /**
      * Finds maximum of list
+     * @return the maximum of the list.
      */
     public T maximum() {
         T max = data[0];
-        if (max instanceof String){
+        if (max instanceof String) {
             throw new UnsupportedOperationException();
         }
-        for (int i = 1; i < sz; i++){
-            if ((int)max < (int)data[i]){
+        for (int i = 1; i < sz; i++) {
+            if ((int) max < (int) data[i]) {
                 max = data[i];
             }
         }
         return max;
     }
-    
+
+    /**
+     * Converts list to string
+     * @return the string rendition of the list
+     */   
     public String toString() {
         String str = new String();
         for (int i = 0; i < sz - 1; i++) {
             str = str + String.valueOf(data[i]) + ", ";
         }
-        str = str + String.valueOf(data[sz-1]) + "]";
+        str = str + String.valueOf(data[sz - 1]) + "]";
         return str;
     }
 
+    /**
+     * Sorts the list using insertion sort
+     */ 
     public void insertionSort() {
         T item = data[0];
-        if (item instanceof String){
+        if (item instanceof String) {
             throw new UnsupportedOperationException();
         }
-        for(int i = 1; i < sz; i++) {
+        for (int i = 1; i < sz; i++) {
             T tmp = data[i];
             int j = i - 1;
-            while(j >= 0 && (Integer) data[j] < (Integer) tmp) {
-                data[j+1] = data[j];
+            while (j >= 0 && (Integer) data[j] < (Integer) tmp) {
+                data[j + 1] = data[j];
                 j--;
             }
-            data[j+1] = tmp; // complete swap
+            data[j + 1] = tmp; // complete swap
         }
     }
 }

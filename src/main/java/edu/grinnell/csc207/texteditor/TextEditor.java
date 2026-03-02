@@ -16,10 +16,16 @@ import java.nio.file.Paths;
  */
 public class TextEditor {
 
-    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException{
+    /**
+     * Engine to draw the new buffer
+     * @param buf
+     * @param screen
+     * @throws IOException
+     */
+    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         screen.clear();
         String str = buf.toString();
-        for(int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             screen.setCharacter(0, i, TextCharacter.fromCharacter(str.charAt(i))[0]);
         }
         screen.setCursorPosition(new TerminalPosition(buf.getCursorPosition(), 0));
@@ -31,7 +37,7 @@ public class TextEditor {
      * The main entry point for the TextEditor application.
      * @param args command-line arguments.
      */
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         if (args.length != 1) {
             System.err.println("Usage: java TextEditor <filename>");
             System.exit(1);
@@ -61,9 +67,13 @@ public class TextEditor {
             } else if (stroke.getKeyType() == KeyType.Backspace) {
                 buf.delete();
             } else if (stroke.getKeyType() == KeyType.ArrowLeft) {
-                try { buf.moveLeft(); } catch (IndexOutOfBoundsException e) { /* do nothing */ }
+                try { 
+                    buf.moveLeft(); 
+                } catch (IndexOutOfBoundsException e) { /* do nothing */ }
             } else if (stroke.getKeyType() == KeyType.ArrowRight) {
-                try { buf.moveRight(); } catch (IndexOutOfBoundsException e) { /* do nothing */ }
+                try { 
+                    buf.moveRight(); 
+                } catch (IndexOutOfBoundsException e) { /* do nothing */ }
             }
             drawBuffer(buf, screen);
         }

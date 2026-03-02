@@ -4,8 +4,11 @@ package edu.grinnell.csc207.texteditor;
  * A naive implementation of a text buffer using a <code>String</code>.
  */
 public class SimpleStringBuffer implements Buffer {
+
     private String buffer;
+
     private int i;
+
     private int sz;
 
     /**
@@ -16,8 +19,10 @@ public class SimpleStringBuffer implements Buffer {
         i = 0;
         sz = 0;
     }
+
     /**
      * Add characters to the buffer
+     * @param ch
      */
     public void insert(char ch) {
         buffer = buffer.substring(0, i) + ch + buffer.substring(i);
@@ -29,8 +34,8 @@ public class SimpleStringBuffer implements Buffer {
      * Delete characters from the buffer
      */
     public void delete() {
-        if (sz > 0){
-            buffer = buffer.substring(0, i-1) + buffer.substring(i);
+        if (sz > 0) {
+            buffer = buffer.substring(0, i - 1) + buffer.substring(i);
             i--;   
             sz--; 
         }
@@ -48,7 +53,7 @@ public class SimpleStringBuffer implements Buffer {
      * Move cursor to the left if possible
      */
     public void moveLeft() {
-        if (i > 0){
+        if (i > 0) {
             i--;
         }
     }
@@ -57,7 +62,7 @@ public class SimpleStringBuffer implements Buffer {
      * Move cursor to the right if possible
      */
     public void moveRight() {
-        if(i < sz) {
+        if (i < sz) {
             i++;
         }
     }
@@ -71,11 +76,12 @@ public class SimpleStringBuffer implements Buffer {
     }
 
     /**
-     * Get the character at specified index of buffer
-     * @return character at <i>th index
+     * Get the character at specified index i of buffer
+     * @param i
+     * @return character at ith index
      */
     public char getChar(int i) {
-        if (i < 0 || i > sz){
+        if (i < 0 || i > sz) {
             throw new IndexOutOfBoundsException();
         }
         return buffer.charAt(i);

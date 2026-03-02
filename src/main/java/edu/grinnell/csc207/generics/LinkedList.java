@@ -1,5 +1,8 @@
 package edu.grinnell.csc207.generics;
 
+/**
+ * Linked List implementation
+ */
 public class LinkedList<T> implements List<T> {
     private static class Node<T> {
         public T value;
