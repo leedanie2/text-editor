@@ -137,7 +137,7 @@ public class ArrayList<T> implements List<T> {
         int lowerBound = 0;  
         for (int i = 0; i < data.length; i++) {
             for (int j = lowerBound; j > 0; j--) {
-                if ((Integer) data[j] < (Integer)data[j - 1]) {
+                if ((Integer) data[j] < (Integer) data[j - 1]) {
                     tmp = data[j];
                     data[j] = data[j - 1];
                     data[j - 1] = tmp;
