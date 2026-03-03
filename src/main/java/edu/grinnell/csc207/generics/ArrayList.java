@@ -130,18 +130,21 @@ public class ArrayList<T> implements List<T> {
      * Sorts the list using insertion sort
      */ 
     public void insertionSort() {
-        T item = data[0];
-        if (item instanceof String) {
+        T tmp;
+        if (data[0] instanceof String) {
             throw new UnsupportedOperationException();
         }
-        for (int i = 1; i < sz; i++) {
-            T tmp = data[i];
-            int j = i - 1;
-            while (j >= 0 && (Integer) data[j] < (Integer) tmp) {
-                data[j + 1] = data[j];
-                j--;
+        int lowerBound = 0;  
+        for (int i = 0; i < data.length; i++) {
+            for (int j = lowerBound; j > 0; j--) {
+                if ((Integer) data[j] < (Integer)data[j - 1]) {
+                    tmp = data[j];
+                    data[j] = data[j - 1];
+                    data[j - 1] = tmp;
+                }
             }
-            data[j + 1] = tmp; // complete swap
+            lowerBound++;
         }
     }
+
 }
